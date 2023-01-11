@@ -209,8 +209,8 @@ const mostrarCarrito = () => {
         <p>Producto: ${nombre}</p>
       <p>Precio: ${precio}</p>
       <p>Cantidad :${cantidad}</p>
-      p>Descripcion :${desc}</p>
-      p>Descuento :${descuento}</p>
+      <p>Descripcion :${desc}</p>
+      <p>Descuento :${descuento}</p>
       
       
       <button class="btn btn-danger"  onclick="eliminarProducto(${id})">Eliminar producto</button>
