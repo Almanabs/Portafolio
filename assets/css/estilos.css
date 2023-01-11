@@ -38,3 +38,8 @@ a{
 .boton{
     opacity:0;
 }
+
+main{
+    display: flex;
+    margin-left: 100px;
+}
