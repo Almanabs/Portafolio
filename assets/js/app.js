@@ -118,7 +118,7 @@ const precioTotal = document.querySelector("#precioTotal");
 const activarFuncion = document.querySelector("#activarFuncion");
 const procesarCompra = document.querySelector("#procesarCompra");
 const totalProceso = document.querySelector("#totalProceso");
-const formulario = document.querySelector('#procesar-pago')
+const formulario = document.querySelector('#procesar-pago');
 
 if (activarFuncion) {
   activarFuncion.addEventListener("click", procesarPedido);
@@ -254,7 +254,7 @@ function eliminarProducto(id) {
 function procesarPedido() {
   carrito.forEach((prod) => {
     const listaCompra = document.querySelector("#lista-compra tbody");
-    const { id, nombre, precio, img, cantidad } = prod;
+    const { id, nombre, precio, img, cantidad, descuento } = prod;
     if (listaCompra) {
       const row = document.createElement("tr");
       row.innerHTML += `
@@ -265,13 +265,14 @@ function procesarPedido() {
             <td>${precio}</td>
             <td>${cantidad}</td>
             <td>${precio * cantidad}</td>
+            <td>${descuento}</td>
             
             `;
       listaCompra.appendChild(row);
     }
   });
   totalProceso.innerText = carrito.reduce(
-    (acc, prod) => acc + prod.cantidad * prod.precio,prod.descuento,
+    (acc, prod) => acc + prod.cantidad * prod.precio - prod.descuento,
     0
   );
 }
@@ -335,27 +336,3 @@ function procesarPedido() {
 
  }
 
- //LÓGICA DESCUENTO POR CUPÓN
-document
-.getElementById("btn-descuento")
-.addEventListener("click", function (event) {
-  let cuponIngresado = document.getElementById("input-cupon").value;
-
-  let cuponEncontrado = cupones.find(
-    (cupon) => cupon.nombre == cuponIngresado
-  );
-
-
-  if (cuponEncontrado && cuponEncontrado.estado == true) {
-    alert("cupón encontrado.");
-    precioTotalCompra =
-      precioTotalCompra -
-      (precioTotalCompra * cuponEncontrado.descuento) / 100;
-    document.querySelector(
-      "#totalProceso"
-    ).innerHTML = `El precio total de la compra con descuento es: <strong>$${precioTotalCompra}</strong>`;
-    cuponEncontrado.estado = false;
-  } else {
-    alert("El cupón no existe. / o está caducado");
-  }
-});

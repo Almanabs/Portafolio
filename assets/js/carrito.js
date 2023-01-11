@@ -1,7 +1,7 @@
 export function procesarPedido() {
   carrito.forEach((prod) => {
     const contenedorCompra = document.querySelector('#contenedorCompra')
-    const { id, nombre, precio, desc, img, cantidad } = prod;
+    const { id, nombre, precio, desc, img, cantidad, descuento } = prod;
     const div = document.createElement("div");
     div.innerHTML += `
           <div class="modal-contenedor">
@@ -13,6 +13,7 @@ export function procesarPedido() {
           <p>Precio: ${precio}</p>
           <p>Cantidad :${cantidad}</p>
           <p>Descripcion :${desc}</p>
+          <p>Descuento :${descuento}</p>
           <button class="btn btn-danger"  onclick="eliminarProducto(${id})">Eliminar producto</button>
             </div>
           </div>
