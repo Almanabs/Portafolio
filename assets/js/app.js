@@ -483,11 +483,11 @@ let productosStorage = JSON.parse(localStorage.getItem("productos")) || [];
 let btnmodificar = document.getElementById("btn-modificar");
 btnmodificar.addEventListener ("click",(event)=> {
   event.preventDefault();
-  let id=crud_id.value
-  let nombre=crud_nombre.value
-  let descripcion=crud_descripcion.value
-  let precio=crud_precio.value
-  let stock=crud_stock.value
+  let id=crud_id.value;
+  let nombre=crud_nombre.value;
+  let descripcion=crud_descripcion.value;
+  let precio=crud_precio.value;
+  let stock=crud_stock.value;
   let producto = new Producto (id, nombre, descripcion, precio, stock);
 
   if (producto.getProduct()){ 
@@ -507,9 +507,11 @@ btnagregar.addEventListener ("click",(event)=> {
   let stock=crud_stock.value || "";
   let producto = new Producto (id, nombre, descripcion, precio, stock);
 
-  if (producto.getProduct()){ 
+  if (! producto.getProduct()){
     producto.addProduct()
     cargarTabla(producto.getProducts()) 
+  }else{ alert("Ya hay un producto con ese ID" +  producto.id)
+    
   }
 })
 
@@ -517,11 +519,11 @@ btnagregar.addEventListener ("click",(event)=> {
 let btneliminar = document.getElementById("btn-eliminar");
 btneliminar.addEventListener ("click",(event)=> {
   event.preventDefault();
-  let id=crud_id.value
-  let nombre=crud_nombre.value
-  let descripcion=crud_descripcion.value
-  let precio=crud_precio.value
-  let stock=crud_stock.value
+  let id=crud_id.value;
+  let nombre=crud_nombre.value;
+  let descripcion=crud_descripcion.value;
+  let precio=crud_precio.value;
+  let stock=crud_stock.value;
   let producto = new Producto (id, nombre, descripcion, precio, stock);
 
   if (producto.getProduct()){ 
